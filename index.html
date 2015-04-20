@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-4" ng-show="restaurants.length">
                     <h4>Search Restaurants</h4>
-                    <form class="form-inline" role="form">
+                    <!-- <form class="form-inline" role="form">
                         <div class="form-group">
                             <input ng-model="query.$" type="text" class="form-control" placeholder="Any">
                         </div>
@@ -50,6 +50,21 @@
                             <input ng-model="query.address" type="text" class="form-control" placeholder="Address">
                         </div>
 
+                    </form> -->
+
+                    <!-- <form  role="form">
+                        <input ng-model="query.typeFood" type="checkbox" ng-true-value="'Chinese'" ng-false-value="''">Chinese<br>
+                        <input ng-model="query.typeFood" type="checkbox" ng-true-value="'Mexican'" ng-false-value="''">Mexican<br>
+                        <input ng-model="query.typeFood" type="checkbox" ng-true-value="'Italian'" ng-false-value="''">Italian<br>
+                    </form> -->
+
+
+                    <form role="form">
+                        <ul>
+                            <li ng-repeat="item in restaurants">
+                                <input ng-model="query.typeFood" type="checkbox" ng-true-value="'{{item.typeFood}}'" ng-false-value="''">{{item.typeFood}}<br>
+                            </li>
+                        </ul>
                     </form>
                 </div>
             <div class="col-md-4">

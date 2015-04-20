@@ -9,5 +9,5 @@ bestRestaurants.controller("RestaurantsCtrl", function RestaurantsCtrl($scope) {
     $scope.restaurants.splice(index, 1);
 };
 
-    
+
 });
