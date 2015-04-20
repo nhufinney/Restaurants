@@ -11,13 +11,19 @@
     <body>
         <div class="container" ng-controller="RestaurantsCtrl">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <h2 ng-show="restaurants.length && filtered.length">Restaurants</h2>
                     <h2 ng-show="restaurants.length && !filtered.length">No Matches</h2>
                     <ul>
                         <li ng-repeat="item in filtered = (restaurants | filter:query)">
                             <span ng-click="editing = true" ng-hide="editing">
                                 {{ item.name }} <a ng-click="deleteRestaurant(item)">Delete</a>
+                                <br>
+                                Type of Food: {{ item.typeFood }}
+                                <br>
+                                Address: {{ item.address }}
+                                <br>
+                                Price Range: {{ item.priceRange }}
                             </span>
                             <span class="form-group" ng-show="editing" ng-submit="editing = false">
                                 <form class="form-inline" role="form">
@@ -28,25 +34,37 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-6" ng-show="restaurants.length">
-                        <h4>Search Restaurants</h4>
-                        <form class="form-inline" role="form">
-                            <div class="form-group">
-                                <input ng-model="query" type="text" class="form-control" placeholder="Search">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <h2>Add New Restaurant</h2>
-                    <form ng-submit="addRestaurant()" class="form-inline" role="form">
+                <div class="col-md-4" ng-show="restaurants.length">
+                    <h4>Search Restaurants</h4>
+                    <form class="form-inline" role="form">
                         <div class="form-group">
-                            <input type="text" ng-model="restaurantName" class="form-control" placeholder="Enter name">
+                            <input ng-model="query.$" type="text" class="form-control" placeholder="Any">
                         </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <div class="form-group">
+                            <input ng-model="query.name" type="text" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input ng-model="query.typeFood" type="text" class="form-control" placeholder="Type of Food">
+                        </div>
+                        <div class="form-group">
+                            <input ng-model="query.address" type="text" class="form-control" placeholder="Address">
+                        </div>
+
                     </form>
                 </div>
+            <div class="col-md-4">
+                <h2>Add New Restaurant</h2>
+                <form ng-submit="addRestaurant()" class="form-inline" role="form">
+                    <div class="form-group">
+                        <input type="text" ng-model="restaurantName" class="form-control" placeholder="Enter name">
+                        <input type="text" ng-model="restaurantFoodType" class="form-control" placeholder="Type of Food">
+                        <input type="text" ng-model="restaurantLocation" class="form-control" placeholder="Address">
+                        <input type="text" ng-model="restaurantPriceRange" class="form-control" placeholder="Price Range">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
             </div>
+        </div>
         </div>
     </body>
 </html>
